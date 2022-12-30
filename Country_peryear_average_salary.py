@@ -1,8 +1,8 @@
 from main import *
 
-para_data = currency_data[currency_data["Date"] == "3/17/2022"][["Currency Code", "Currency Name", "Exchange Rate"]]
+para_data = currency_data[currency_data["Date"] == "3/17/2022"][["Currency Code", "Currency Name", "Exchange Rate"]] 
 merged_data = pd.merge(survey_data, para_data, left_on="Currency", right_on="Currency Code", how="outer", sort=False)
-merged_data.info()
+# merged_data.info()
 merged_data[(~merged_data["Currency"].isna()) & (merged_data["Currency Code"].isna())].index
 def conversion(index):
     if (merged_data.loc[index, "CompFreq"] == "Weekly"):
